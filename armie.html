@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neusknop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: url('meow.jpg') no-repeat center center fixed;
+            background-size: cover; /* Zorgt ervoor dat het hoofd altijd het hele scherm vult */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #neusknop {
+            position: absolute;
+            padding: 10px 20px;
+            color: transparent;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transform: translate(-50%, -50%); /* Houdt de knop in het midden */
+            height: 35vh;
+            width: 25vw;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="neusknop" onclick="speelGeluid()">Speel Geluid</button>
+    <audio id="geluid" src="heuh.mp3"></audio>
+
+    <script>
+        function speelGeluid() {
+            document.getElementById("geluid").play();
+        }
+    </script>
+
+    <script>
+        function plaatsKnop() {
+            let breedte = window.innerWidth;
+            let hoogte = window.innerHeight;
+
+            let neusX = 0.57; // Pas deze waarden aan totdat de knop perfect op de neus zit
+            let neusY = 0.75;
+
+            let x = breedte * neusX;
+            let y = hoogte * neusY;
+
+            let knop = document.getElementById('neusknop');
+            knop.style.left = x + 'px';
+            knop.style.top = y + 'px';
+        }
+
+        window.onload = plaatsKnop;
+        window.onresize = plaatsKnop;
+    </script>
+
+</body>
+</html>
